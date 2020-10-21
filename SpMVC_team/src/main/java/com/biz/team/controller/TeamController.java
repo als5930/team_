@@ -39,10 +39,7 @@ public class TeamController {
 	public String list(Model model) {
 
 	
-		List<TeamVO> teList = teService.selectAll();
-
-		model.addAttribute("TELIST", teList);
-		model.addAttribute("BODY", "TEAM-LIST");
-		return "home";
+		return "/WEB-INF/views/page/page-list1.jsp";
 	}
+
 }

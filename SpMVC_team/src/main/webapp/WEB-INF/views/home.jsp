@@ -5,74 +5,88 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>Home</title>
-<link href="${rootPath}/static/css/imag.css?var=2020-09-29-002"rel="stylesheet" />
-<link href="${rootPath}/static/css/menu.css?var=2020-09-29-008"rel="stylesheet" />
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-	var rootPath = "${rootPath}"
-</script>
-<script src="${rootPath}/static/js/main-nav.js?var=2020-09-29-001"></script>
-</head>
-<body>
-	<h1>여행</h1>
-	<nav>
-		<ul id="main-menu">
-			<li id="menu-home"><a>HOME</a></li>
-			<li><a>세대별추천코스</a>
-				<ul id="sub-menu">
-					<li id="menu-two"><a>20대</a></li>
-					<li id="menu-30"><a>30대</a></li>
-					<li id="menu-40"><a>40대</a></li>
-					<li id="menu-50"><a>50대</a></li>
-				</ul></li>
-			<li><a>시대별 추천코스</a>
-				<ul id="sub-menu">
-					<li><a>삼국 시대</a></li>
-					<li><a>고려 시대</a></li>
-					<li><a>조선 시대</a></li>
-					<li><a>근대</a></li>
-				</ul></li>
-			<li><a>지역별 추천코스</a>
-				<ul id="sub-menu">
-					<li><a>경기 지방</a></li>
-					<li><a>관동 지방</a></li>
-					<li><a>호서 지방</a></li>
-					<li><a>호남 지방</a></li>
-					<li><a>경남 지방</a></li>
-				</ul></li>
-			<li><a>인기별 추천코스</a></li>
-		</ul>
-	</nav>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>로그인</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link href="static/css/login.css" rel="stylesheet" />
+    <script src="main.js"></script>
+  </head>
 
-	<div class="mySlides fade">
-		<img src="static/images/001.jpg" />
-	</div>
-	<div class="mySlides fade">
-		<img src="static/images/002.jpg" />
-	</div>
-	<div class="mySlides fade">
-		<img src="static/images/003.jpg" />
+  <body>
+    <div class="wrap">
+      <img id="wrap-img" src="static/images/0.jpg" />
+      <div class="form-wrap">
+        <div class="button-wrap">
+          <div id="btn"></div>
+          <button type="button" class="togglebtn" onclick="login()">
+            로그인
+          </button>
+          <button type="button" class="togglebtn" onclick="register()">
+            회원가입
+          </button>
+        </div>
+        <div class="social-icons">
+          <img src="static/images/fb.jpg" alt="facebook" />
+          <img src="static/images/gl.jpg" alt="google" />
+        </div>
+        <form id="login" action="" class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            placeholder="아이디"
+            required=""
+          />
+          <input
+            type="password"
+            class="input-field"
+            placeholder="비밀번호"
+            required=""
+          />
 
-	</div>
-	<br />
+          <button class="submit">로그인</button>
+        </form>
+        <form id="register" action="" class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            placeholder="아이디"
+            required=""
+          />
+          <input
+            type="email"
+            class="input-field"
+            placeholder="이메일"
+            required=""
+          />
+          <input
+            type="password"
+            class="input-field"
+            placeholder="비밀번호"
+            required=""
+          />
 
-	<div style="text-align: center">
-		<span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
-	</div>
+          <button class="submit">회원가입</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      var x = document.getElementById("login");
+      var y = document.getElementById("register");
+      var z = document.getElementById("btn");
 
-	<div class="name">인기</div>
-	<div class="name">인기</div>
-	<div class="name">인기</div>
-<section id="main-section">
-		<c:choose>
-			<c:when test="${BODY == 'TEAM-LIST'}">
+      function login() {
+        x.style.left = "50px";
+        y.style.left = "450px";
+        z.style.left = "0";
+      }
 
-				<%@ include file="/WEB-INF/views/page/page-list.jsp"%>
-			</c:when>
-			</c:choose>
-			</section>
-</body>
+      function register() {
+        x.style.left = "-400px";
+        y.style.left = "50px";
+        z.style.left = "110px";
+      }
+    </script>
+  </body>
 </html>
