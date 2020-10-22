@@ -23,7 +23,7 @@
         <li><a href="list3.html">유적지/사적지</a></li>
         <li><a href="k.html">공지사항</a></li>
         <li><a href="g.html">게시판</a></li>
-        <li><a href="login.html">로그인</a></li>
+        <li><a href="login.html">로그아웃</a></li>
       </ul>
     </nav>
 
