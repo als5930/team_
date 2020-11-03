@@ -7,15 +7,13 @@ section#search-list {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
-	
 }
 
-section#search-list h3#title {
-	border-bottom: 2px double black;
+section#search-list h3 {
+	border-bottom: 1px double black;
 	width: 60%;
 	margin: 10px;
 	padding: 10px;
-	
 }
 
 section#search-list div {
@@ -31,7 +29,7 @@ section#search-list div p b {
 }
 
 img {
-	width: 20%;
+	width: 50px;
 	float: left;
 	margin: 10px;
 }
@@ -63,12 +61,14 @@ $(function() {
 		document.location.href = "${rootPath}/team/detail/" + seq
 	})
 	$("#btn-write").click(function() {
+		let category = $(this).data("category")
 		document.location.href = "${rootPath}/team/write"
 	})
 })
 
 </script>
 <section id="search-list">
+	<h3>${category}</h3>
 	<c:forEach items="${hlist}" var="hlist">
 		<div class="team-item" data-seq="${hlist.h_seq}">
 			<c:if test="${hlist.h_file == null }">

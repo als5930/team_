@@ -4,10 +4,15 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <style>
 nav ul {
-	width: 100%;
+	list-style: none;
 	display: flex;
-	position: relative;
-	background: linear-gradient(90deg, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+	background: linear-gradient(
+    90deg,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12);
 	color: white;
 }
 
@@ -27,23 +32,18 @@ nav ul li:hover {
 }
 </style>
 <script type="text/javascript">
-	$(function() {
-		$(".team-list").click(function() {
-			let category = $(this).data("category")
-			document.location.href = "${rootPath}/team/list/" + category
-		})
-		$(".home").click(function() {
-			document.location.href = "${rootPath}/"
-		})
+$(function() {
+	$(".team-list").click(function() {
+		let category = $(this).data("category")
+		document.location.href = "${rootPath}/team/list/" + category
 	})
-	
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".team-board")
-          .addEventListener("click",function() {
-             document.location.href = "${rootPath}/board/list"
-          })
+	$(".home").click(function() {
+		document.location.href = "${rootPath}/"
+	})
+	$(".bbs-list").click(function() {
+		document.location.href = "${rootPath}/bbs/list"
+	})
 })
-
 </script>
 <nav id="main-nav">
 	<ul id="main-menu">
@@ -51,11 +51,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		<li class="team-list" data-category="1">고궁/성</li>
 		<li class="team-list" data-category="2">고택/생가</li>
 		<li class="team-list" data-category="3">유적지/사적지</li>
-		<li class="team-board" data-category="4">게시판</li>
-		
+		<li class="bbs-list">자유게시판</li>
 		<li>마이페이지</li>
 		<li>관리자</li>
 		<li>로그아웃</li>
-
+		
 	</ul>
 </nav>

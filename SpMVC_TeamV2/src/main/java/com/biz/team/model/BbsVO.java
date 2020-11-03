@@ -11,14 +11,15 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class BoardVO {
+public class BbsVO {
 	
-	 private long b_seq;
-	 private String b_date;
-	 private String b_time;
-	 private String b_writer;
-	 private String b_subject;
-	 private String b_content;
-	 private int b_count;
+	  private long b_seq;	
+	  private String b_date;	
+	  private String  b_time;		
+	  private String b_writer;	
+	  private String b_subject;	
+	  private String b_content;
+	  private int b_count;
+	
 
 }
