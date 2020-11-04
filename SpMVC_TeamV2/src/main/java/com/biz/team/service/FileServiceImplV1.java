@@ -13,20 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service("fileServiceV1")
 public class FileServiceImplV1 implements FileService{
 
-	/*
-	 * 필드변수를 private final로 선언했을 경우
-	 * 보통 final로 선언된 변수는  선언과 동시에 생성(초기화)를 해야한다.
-	 * private final로 선언된 맴버변수는
-	 * 클래스의 생성자  메서드에서 초기화하는 것을 허용한다.
-	 * 
-	 * private final로 선언된 멤버변수는 
-	 * 반드시 클래스의 생성자 메서드에서 초기화 해야 한다.
-	 */
-	/*
-	 * private 으로 선언된 rootFolder변수를
-	 * protected로 변경
-	 * protected로 선언된 변수들은 현재 클래스
-	 */
+
 	protected final String rootFolder;
 	public FileServiceImplV1() {
 		rootFolder = "C:/bizwork/workspace/upload/team";
@@ -41,16 +28,16 @@ public class FileServiceImplV1 implements FileService{
 		
 		File dir = new File(rootFolder);
 		
-		// file을 upload할 폴더를 검사하여 없으면 새로 생성해달라
+		// file�쓣 upload�븷 �뤃�뜑瑜� 寃��궗�븯�뿬 �뾾�쑝硫� �깉濡� �깮�꽦�빐�떖�씪
 		if(!dir.exists()) {
-			// mkdir()은 제일끝의 폴더 1개만 생성
-			// mkdirs() 모든 경로의 폴더를 한꺼번에 생성
+			// mkdir()�� �젣�씪�걹�쓽 �뤃�뜑 1媛쒕쭔 �깮�꽦
+			// mkdirs() 紐⑤뱺 寃쎈줈�쓽 �뤃�뜑瑜� �븳爰쇰쾲�뿉 �깮�꽦
 			dir.mkdirs();
 		}
 		
 		String fileName = file.getOriginalFilename();
 		
-		// 서버의 저장폴더 + 파일이름을 합성하여 파일 저장 준비
+		// �꽌踰꾩쓽 ���옣�뤃�뜑 + �뙆�씪�씠由꾩쓣 �빀�꽦�븯�뿬 �뙆�씪 ���옣 以�鍮�
 		File saveFile = new File(rootFolder,fileName);
 		try {
 			file.transferTo(saveFile);
@@ -61,12 +48,12 @@ public class FileServiceImplV1 implements FileService{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// UUID가 부착된 파일이름을 controller로  return하여 DB에 저장하는 용도로
+		// UUID媛� 遺�李⑸맂 �뙆�씪�씠由꾩쓣 controller濡�  return�븯�뿬 DB�뿉 ���옣�븯�뒗 �슜�룄濡�
 		return fileName;
 	}
 
 	/*
-	 * 파일이름을 받아서 파일을 삭제
+	 * �뙆�씪�씠由꾩쓣 諛쏆븘�꽌 �뙆�씪�쓣 �궘�젣
 	 */
 	@Override
 	public boolean fileDelete(String h_file) {
@@ -74,7 +61,7 @@ public class FileServiceImplV1 implements FileService{
 		boolean ret = false;
 		File deleteFile = new File(rootFolder,h_file);
 		if(deleteFile.exists()) {
-			// 파일을 삭제하면 true return
+			// �뙆�씪�쓣 �궘�젣�븯硫� true return
 			ret = deleteFile.delete();
 		}
 		return ret;

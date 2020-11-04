@@ -97,7 +97,7 @@ $(".list").click(function() {
 })
 $(".update").click(function() {
 	  const seq = $(this).data("seq");
-	    document.location.href = "${rootPath}/update?seq=" 
+	    document.location.href = "${rootPath}/update?seq="
 })
 $(".delete").click(function() {
 	document.location.href = "${rootPath}/bbs/delete"

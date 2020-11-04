@@ -22,7 +22,7 @@ nav ul li {
 	cursor: pointer;
 }
 
-nav ul li:nth-child(6) {
+nav ul li:nth-child(5) {
 	margin-left: auto;
 }
 
@@ -37,23 +37,26 @@ $(function() {
 		let category = $(this).data("category")
 		document.location.href = "${rootPath}/team/list/" + category
 	})
-	$(".home").click(function() {
-		document.location.href = "${rootPath}/"
-	})
+
 	$(".bbs-list").click(function() {
 		document.location.href = "${rootPath}/bbs/list"
 	})
+
+	$(".team-my").click(function() {
+		document.location.href = "${rootPath}/users/mypage"
+	})
+		 
 })
 </script>
 <nav id="main-nav">
 	<ul id="main-menu">
-		<li class="home">home</li>
+		
 		<li class="team-list" data-category="1">고궁/성</li>
 		<li class="team-list" data-category="2">고택/생가</li>
 		<li class="team-list" data-category="3">유적지/사적지</li>
 		<li class="bbs-list">자유게시판</li>
-		<li>마이페이지</li>
-		<li>관리자</li>
+		<li class="team-my">마이페이지</li>
+		
 		<li>로그아웃</li>
 		
 	</ul>
