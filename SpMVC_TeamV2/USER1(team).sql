@@ -21,3 +21,35 @@ DROP SEQUENCE seq_hlist;
 SELECT * FROM tbl_hlist WHERE h_category = 1 order by h_seq;
 
 DELETE tbl_hlist WHERE h_category = 2;
+
+CREATE TABLE tbl_board (
+b_seq	NUMBER		PRIMARY KEY,
+b_date	VARCHAR2(10)	NOT NULL,	
+b_time	VARCHAR2(10)	NOT NULL,	
+b_writer	NVARCHAR2(30)	NOT NULL,	
+b_subject	NVARCHAR2(125)	NOT NULL,	
+b_content	NVARCHAR2(2000)		,
+b_count	NUMBER		
+
+);
+
+CREATE SEQUENCE seq_board
+START WITH 1 INCREMENT BY 1;
+
+DROP TABLE tbl_board;
+DROP SEQUENCE seq_board;
+
+CREATE TABLE tbl_login (
+username	VARCHAR2(30)		PRIMARY KEY,
+PASSWORD	nVARCHAR2(255)	NOT NULL	,
+M_NAME	nVARCHAR2(30)		,
+M_TEL	VARCHAR2(30)		,
+M_EMAIL	VARCHAR2(30)		,
+Enabled	CHAR(1)	DEFAULT '0'	,
+AccountNonExpired	CHAR(1)		,
+AccountNonLocked	CHAR(1)		,
+CredentialsNonExpired	CHAR(1)		
+);
+
+
+

@@ -92,17 +92,17 @@ h2 {
 </style>
 <script>
 $(function() {
-$(".list").click(function() {
-	document.location.href = "${rootPath}/bbs/list"
-})
-$(".update").click(function() {
-	  const seq = $(this).data("seq");
-	    document.location.href = "${rootPath}/update?seq="
-})
-$(".delete").click(function() {
-	document.location.href = "${rootPath}/bbs/delete"
-})
-
+	$(".bbs-list").click(function() {
+		document.location.href = "${rootPath}/bbs/list"
+	})
+	$(".update").click(function() {
+		let seq = ${BbsVO.b_seq}
+		document.location.href = "${rootPath}/bbs/update/" + seq
+	})
+	$(".delete").click(function() {
+		let seq = ${BbsVO.b_seq}
+		document.location.href = "${rootPath}/bbs/delete/" + seq
+	})
 })
 </script>
 <section id="team-detail-header">
@@ -126,7 +126,7 @@ $(".delete").click(function() {
 	</article>
 </section>
 <section id="team-button-box">
-	<button class="list">리스트</button>
+	<button class="bbs-list">리스트</button>
 	<button class="update">수정</button>
 	<button class="delete">삭제</button>
 </section>

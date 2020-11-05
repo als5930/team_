@@ -4,8 +4,8 @@ import org.apache.ibatis.jdbc.SQL;
 
 public class BbsSQL {
 
-public String bbs_insert() {
-		
+	public String bbs_insert() {
+
 		SQL sql = new SQL();
 		sql.INSERT_INTO("tbl_board");
 		sql.INTO_COLUMNS("b_seq").INTO_VALUES("seq_board.NEXTVAL");
@@ -17,14 +17,11 @@ public String bbs_insert() {
 		sql.INTO_COLUMNS("b_count").INTO_VALUES("#{b_count}");
 
 		return sql.toString();
-		
+
 	}
 
-	/*
-	 * SQL �겢�옒�뒪瑜� �궗�슜�븯�뿬 xml ���떊 Java Code諛⑹떇�쑝濡� SQL �옉�꽦
-	 */
 	public String bbs_update() {
-		
+
 		SQL sql = new SQL();
 		sql.UPDATE("tbl_board");
 		sql.SET("b_date = #{b_date}");

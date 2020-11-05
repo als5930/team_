@@ -34,16 +34,14 @@ public class BbsServiceImpV1 implements BbsService{
 
 	@Override
 	public int update(BbsVO bbsVO) {
-		int ret = bbsDao.update(bbsVO);	
-		return ret;
+		
+		return bbsDao.update(bbsVO);
 		
 	}
 
 	@Override
 	public int delete(long seq) {
-		// TODO Auto-generated method stub
 		
-		BbsVO bbsVO = bbsDao.findBySeq(seq);
 		return bbsDao.delete(seq);
 	}
 

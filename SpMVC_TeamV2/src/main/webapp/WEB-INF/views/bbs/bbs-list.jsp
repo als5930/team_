@@ -32,9 +32,9 @@ td {
 	cursor: pointer;
 }
 
-	tr.bor-tr:hover {
-		background-color: #ccc;
-	}
+tr.bor-tr:hover {
+	background-color: #ccc;
+}
 
 div.btn {
 	width: 90%;
@@ -59,18 +59,15 @@ div.btn button {
 </style>
 <script type="text/javascript">
 	$(function() {
-	
-		
-	
 		$("#g-save").click(function() {
 			document.location.href = "${rootPath}/bbs/write"
 		})
-		
+
 		$("tr").click(function() {
 			let seq = $(this).data("seq")
-			document.location.href = "${rootPath}/bbs/detail/"+seq
+			document.location.href = "${rootPath}/bbs/detail/" + seq
 		})
-		
+
 	})
 </script>
 <h2>게시판</h2>
@@ -86,25 +83,21 @@ div.btn button {
 			<th>조회수</th>
 		</tr>
 	</thead>
-	<c:if test="${empty bor}">
-		<tr ><td colspan="7">데이터가 없습니다</td>
+	<c:if test="${empty bbsList}">
+		<tr>
+			<td colspan="7">데이터가 없습니다</td>
 	</c:if>
-	<c:forEach items="${bor}" var="bor">
-		<tr class="bor-tr" data-seq = "${bor.b_seq}">
-			<td >${bor.b_seq}</td>
-			<td>${bor.b_date}</td>
-			<td>${bor.b_time}</td>
-			<td>${bor.b_writer}</td>
-			<td>${bor.b_subject}</td>
-			<td>${bor.b_content}</td>
-			<td>${bor.b_count}</td>
-			
-			
-	
-		
-			</tr>
+	<c:forEach items="${bbsList}" var="list">
+		<tr class="bor-tr" data-seq="${list.b_seq}">
+			<td>${list.b_seq}</td>
+			<td>${list.b_date}</td>
+			<td>${list.b_time}</td>
+			<td>${list.b_writer}</td>
+			<td>${list.b_subject}</td>
+			<td>${list.b_content}</td>
+			<td>${list.b_count}</td>
+		</tr>
 	</c:forEach>
-	
 </table>
 <div class="btn">
 	<button id="g-save">작성</button>
