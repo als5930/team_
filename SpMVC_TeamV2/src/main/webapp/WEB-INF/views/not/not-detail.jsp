@@ -92,16 +92,16 @@ h2 {
 </style>
 <script>
 $(function() {
-	$(".bbs-list").click(function() {
+	$(".not-list").click(function() {
 		document.location.href = "${rootPath}/bbs/list"
 	})
 	$(".update").click(function() {
-		let seq = ${BbsVO.b_seq}
-		document.location.href = "${rootPath}/bbs/update/" + seq
+		let seq = ${NotVO.n_seq}
+		document.location.href = "${rootPath}/not/update/" + seq
 	})
 	$(".delete").click(function() {
-		let seq = ${BbsVO.b_seq}
-		document.location.href = "${rootPath}/bbs/delete/" + seq
+		let seq = ${NotVO.n_seq}
+		document.location.href = "${rootPath}/not/delete/" + seq
 	})
 })
 </script>
@@ -109,20 +109,20 @@ $(function() {
 	<article>
 		<h2>게시판</h2>
 		<div class="title">작성자</div>
-		<th>${BbsVO.b_writer}</th>
+		<th>${NotVO.n_writer}</th>
 		<hr />
 		<div class="content">제목</div>
-		<th>${BbsVO.b_subject}</th>
+		<th>${NotVO.n_subject}</th>
 		<hr />
 		<div class="title">날짜</div>
-		<th>${BbsVO.b_date}</th>
+		<th>${NotVO.n_date}</th>
 		<hr />
 		<div class="content">시간</div>
-		<th>${BbsVO.b_time}</th>
+		<th>${NotVO.n_time}</th>
 		<hr />
 		
 		<div class="title">내용</div>
-		<th>${BbsVO.b_content}</th>
+		<th>${NotVO.n_content}</th>
 	</article>
 </section>
 <section id="team-button-box">

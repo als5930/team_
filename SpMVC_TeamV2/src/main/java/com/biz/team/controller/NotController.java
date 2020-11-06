@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,46 +13,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.biz.team.model.BbsVO;
-import com.biz.team.model.UserVO;
-import com.biz.team.service.BbsService;
+import com.biz.team.model.NotVO;
+import com.biz.team.service.NotService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping(value = "/bbs")
-public class BbsController {
+@RequestMapping(value = "/not")
+public class NotController {
 
 	@Autowired
-	private BbsService bbsService;
-
+	private NotService notService;
+	
+	
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
 
-		List<BbsVO> bbsList = bbsService.selectAll();
-		model.addAttribute("bbsList", bbsList);
-		return "/bbs/bbs-list";
+		List<NotVO> notList = notService.selectAll();
+		model.addAttribute("notList", notList);
+		return "not/not-list";
 	}
-
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String write(Model model) {
 		LocalDateTime ldt = LocalDateTime.now();
 		String cd = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(ldt);
 		String ct = DateTimeFormatter.ofPattern("HH:mm:ss").format(ldt);
 		
-		BbsVO bbsVO = BbsVO.builder()
-				.b_date(cd)
-				.b_time(ct)
+		NotVO notVO = NotVO.builder()
+				.n_date(cd)
+				.n_time(ct)
 				.build();
-		model.addAttribute("BbsVO",bbsVO);
-		return "/bbs/bbs-write";
+		model.addAttribute("NotVO",notVO);
+		return "not/not-write";
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String write(BbsVO BbsVO) {
+	public String write(NotVO notVO) {
 
-		bbsService.insert(BbsVO);
-		return "redirect:/bbs/list";
+		notService.insert(notVO);
+		return "redirect:/not/list";
 
 	}
 
@@ -59,36 +61,39 @@ public class BbsController {
 	public String detail(@PathVariable("seq") String seq, Model model) {
 
 		long long_seq = Long.valueOf(seq);
-		BbsVO bbsVO = bbsService.findBySeq(long_seq);
-		int count = bbsVO.getB_count();
-		bbsVO.setB_count(++count);
-		bbsService.update(bbsVO);
-		model.addAttribute("BbsVO", bbsVO);
-		return "/bbs/bbs-detail";
+		NotVO notVO = notService.findBySeq(long_seq);
+		int count = notVO.getN_count();
+		notVO.setN_count(++count);
+		notService.update(notVO);
+		model.addAttribute("NotVO", notVO);
+		return "/not/not-detail";
 	}
 
 	@RequestMapping(value = "/delete/{seq}", method = RequestMethod.GET)
 	public String update(@PathVariable("seq") String seq) {
 
 		Long long_seq = Long.valueOf(seq);
-		bbsService.delete(long_seq);
+		notService.delete(long_seq);
 
-		return "redirect:/bbs/list";
+		return "redirect:/not/list";
 	}
 
 	@RequestMapping(value = "/update/{seq}", method = RequestMethod.GET)
-	public String update(@PathVariable("seq") String seq, BbsVO bbsVO, Model model) {
+	public String update(@PathVariable("seq") String seq, NotVO notVO, Model model) {
 		Long long_seq = Long.valueOf(seq);
-		bbsVO = bbsService.findBySeq(long_seq);
-		model.addAttribute("BbsVO", bbsVO);
-		return "/bbs/bbs-write";
+		notVO = notService.findBySeq(long_seq);
+		model.addAttribute("NotVO", notVO);
+		return "/not/not-write";
 	}
 
 	@RequestMapping(value = "/update/{seq}", method = RequestMethod.POST)
-	public String update(BbsVO bbsVO) {
-		bbsService.update(bbsVO);
-		return "redirect:/bbs/list";
+	public String update(NotVO notVO) {
+		notService.update(notVO);
+		return "redirect:/not/list";
 
 	}
 
 }
+
+	
+

@@ -10,4 +10,5 @@ header {
 </style>
 <header>
 	<h1>문화탐방</h1>
+	
 </header>

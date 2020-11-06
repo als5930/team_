@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.UpdateProvider;
 
 import com.biz.team.model.TeamVO;
+import com.biz.team.sql.BbsSQL;
 import com.biz.team.sql.TeamSQL;
 
 public interface TeamDao {

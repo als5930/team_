@@ -17,7 +17,7 @@ public interface BbsDao {
 
 	@Select("SELECT * FROM tbl_board WHERE b_seq = #{seq}")
 	public BbsVO findBySeq(long seq);
-
+	
 	@InsertProvider(type=BbsSQL.class,method="bbs_insert")
 	public int insert(BbsVO bbsVO);
 
